@@ -1,7 +1,7 @@
 # rustin
 web toy built by js &amp; rust
 
-## rust语言
+## 😋rust语言
 
 rust是一门年轻的语言，正式发行也不到十年时间。
 
@@ -40,6 +40,43 @@ A language empowering everyone to build reliable and efficient software.
 
   对于全栈发展来看，可以作为一个尝试(`server / wasm`)。
   
-## 学习资源
+## 📖学习资源
 
-- [官网](https://www.rust-lang.org/zh-CN/)：内含各种手册，最好都过一下(可能会文档劝退)
+### 文档 & 概念
+- [Rust官网](https://www.rust-lang.org/zh-CN/)：内含各种手册，最好都过一下(可能会文档劝退)
+- [emscripten](https://emscripten.org/)：一套开源的LLVM-to-javascript工具，可编译C/C++到js
+  ![](./img/EmscriptenToolchain.png)
+
+### 库 & 工具
+- [`wasm-bindgen`](https://crates.io/crates/wasm-bindgen)：让`Rust`和`js`可以通信
+- [`wasm-bindgen-futures`](https://crates.io/crates/wasm-bindgen-futures)：桥接`Promise`(js)和`Future`(rust)。
+- [`js-sys`](https://crates.io/crates/js-sys)：让`wasm-bindgen`可以导入js的全局类型和方法，比如`Object`、`Function`。
+- [`web-sys`](https://crates.io/crates/web-sys)：让`wasm-bindgen`可以导入web相关的api，比如`DOM操作`、`setTimeout`、`web GL`、`web Audio`
+- [`console_error_panic_hook`](https://crates.io/crates/console_error_panic_hook)：钩子函数传递`wasm32-unknown-unknown`上的`panic`给`console.error`
+- [`console_log`](https://crates.io/crates/console_log)：让`log`(crate)的消息可以传递到devtools的console上。
+- [`wee_alloc`](https://crates.io/crates/wee_alloc)：小型的动态内存分配器，`~1K`
+- [`parity-wasm`](https://crates.io/crates/parity-wasm)：序列化和反序列化`wasm`文件
+- [`wasmparser`](https://crates.io/crates/wasmparser)：简易的事件驱动的`wasm`文件解析器
+- [`wasmi`](https://crates.io/crates/wasmi)：`wasm`解析器
+- [`cranelift-wasm`](https://crates.io/crates/cranelift-wasm)：编译`wasm`为本地机器码
+- [`wasm-pack`](https://github.com/rustwasm/wasm-pack)：一站式构建发布`wasm`包
+- [`wasm-opt`](https://github.com/WebAssembly/binaryen)：读取`wasm`，转换、优化，输出优化后文件
+- [`wasm2js`](https://github.com/WebAssembly/binaryen)：编译`wasm`近乎`asm.js`
+- [`wasm-gc`](https://github.com/alexcrichton/wasm-gc)：去除非必要的imports、module之类的
+- [`wasm-snip`](https://github.com/rustwasm/wasm-snip)
+- [`twiggy`](https://github.com/rustwasm/twiggy)：`wasm`文件分析
+- [`wasm-objdump`](https://github.com/WebAssembly/wabt)：`wasm`文件分析
+- [`wasm-nm`](https://github.com/fitzgen/wasm-nm)：`wasm`文件分析
+
+## 🌚暂时不能做
+
+- 引入c模块、系统模块
+- 文件读写 IO
+- 多线程
+
+## 🌝常用来做
+
+- 算法模块
+- 图像运算
+- 底层数据结构实现
+- 文本转换
