@@ -1,0 +1,26 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env node ./scripts/start.js",
+    "build": "cross-env node ./scripts/build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chalk": "^4.1.0",
+    "cross-env": "^7.0.2",
+    "html-webpack-plugin": "^4.3.0",
+    "koa": "^2.13.0",
+    "nodemon": "^2.0.4",
+    "webpack": "^4.44.1",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "rxjs": "^6.6.2",
+    "a_wasm": "file:../wasm-beginner/pkg"
+  }
+}
