@@ -1,7 +1,7 @@
 import('a_wasm').then(module => {
   let arr = [];
 
-  let len = 10000;
+  let len = 1000000;
 
   for(let i = 0; i < len; i++) {
     arr.push(i);
@@ -21,7 +21,7 @@ import('a_wasm').then(module => {
   a2 = module.bubble(arr);
   console.timeEnd('rust');
 
-  // console.log(a1, a2)
+  console.log(a1, a2)
 
 })
 
@@ -40,13 +40,15 @@ function shuffle(nums, inplace = false) {
 }
 
 function bubble (nums) {
-  for(let i = 0; i < nums.length; i++) {
-    for(let j = 0; j < nums.length - 1; j++) {
-      if (nums[j] > nums[j + 1]) {
-        exchange(nums, j, j + 1);
-      }
-    }
-  }
+  // for(let i = 0; i < nums.length; i++) {
+  //   for(let j = 0; j < nums.length - 1; j++) {
+  //     if (nums[j] > nums[j + 1]) {
+  //       exchange(nums, j, j + 1);
+  //     }
+  //   }
+  // }
+
+  nums.sort((a, b) => a - b)
 
   return nums
 }

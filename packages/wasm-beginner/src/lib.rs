@@ -18,28 +18,22 @@ extern {
 
 /// 发布方法(给js)
 #[wasm_bindgen]
-pub fn bubble(arr: Box<[JsValue]>) -> Box<[JsValue]> {
+pub fn bubble(arr: &[f64]) -> Vec<f64> {
     // crate::utils::set_panic_hook();
     // console_log::init_with_level(Level::Info).expect("error initializing log");
 
-    let mut copy = arr.clone();
-    let len = arr.len();
+    let mut copy = arr.to_vec();
+    // let len = arr.len();
 
-    for _i in 0..len {
-        for j in 0..len - 1 {
-            let a = copy[j].as_f64();
-            let b = copy[j + 1].as_f64();
-            if a > b {
-                exchange(&mut copy, j, j + 1);
-            }
-        }
-    }
+    // for _i in 0..len {
+    //     for j in 0..len - 1 {
+    //         if copy[j] > copy[j + 1] {
+    //             copy.swap(j, j + 1);
+    //         }
+    //     }
+    // }
 
-    arr
+    copy.sort_unstable_by(|a, b| a.partial_cmp(b).unwrap());
+    copy
 }
 
-fn exchange(arr: &mut Box<[JsValue]>, i: usize, j: usize) {
-    let temp = arr[i].clone();
-    arr[i] = arr[j].clone();
-    arr[j] = temp;
-}
