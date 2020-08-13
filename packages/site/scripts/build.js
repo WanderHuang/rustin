@@ -11,14 +11,24 @@ const cwd = process.cwd();
 log.info(`building in ${cwd}`);
 
 const config = {
-  entry: path.resolve(cwd, './src/index.js'),
+  entry: path.resolve(cwd, 'src/index.js'),
   output: {
     path: path.resolve(cwd, 'dist'),
     filename: 'index.[hash:8].js'
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  },
   plugins: [
-    new HtmlWebpackPlugin()
-  ]
+    new HtmlWebpackPlugin({
+      template: path.resolve(cwd, './src/index.html')
+    })
+  ],
 };
 
 const compiler = webpack(config);

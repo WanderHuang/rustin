@@ -13,14 +13,16 @@
   "devDependencies": {
     "chalk": "^4.1.0",
     "cross-env": "^7.0.2",
+    "css-loader": "^4.2.1",
     "html-webpack-plugin": "^4.3.0",
     "koa": "^2.13.0",
     "nodemon": "^2.0.4",
+    "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "rxjs": "^6.6.2",
-    "a_wasm": "file:../wasm-beginner/pkg"
+    "wasm": "file:../wasm-beginner/pkg"
   }
 }

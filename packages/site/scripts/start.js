@@ -10,12 +10,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const cwd = process.cwd();
 
 const config = {
-  entry: path.resolve(cwd, './src/index.js'),
+  entry: path.resolve(cwd, 'src/index.js'),
   output: {
-    path: path.resolve(cwd, './dist'),
+    path: path.resolve(cwd, 'dist'),
+    filename: 'index.[hash:8].js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      template: path.resolve(cwd, 'src/index.html')
+    })
   ],
 };
 
@@ -24,7 +35,7 @@ log.info('Compiling...');
 const compiler = webpack(config);
 
 const server = new Server(compiler, {
-  contentBase: path.join(cwd, './dist'),
+  contentBase: path.join(cwd, 'dist'),
   compress: true,
   hot: true
 });

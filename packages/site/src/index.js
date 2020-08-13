@@ -1,61 +1,50 @@
-import('a_wasm').then(module => {
-  let arr = [];
+import rxjs, { of, Subject } from 'rxjs';
+import test from './test';
+import './index.css';
 
-  let len = 1000000;
-
-  for(let i = 0; i < len; i++) {
-    arr.push(i);
-  }
-
-  arr = shuffle(arr);
-
-  let a1 = [...arr];
-  let a2 = [...arr];
-  console.log('start bubble', len)
-
-  console.time('js')
-  a1 = bubble(a1);
-  console.timeEnd('js');
-
-  console.time('rust');
-  a2 = module.bubble(arr);
-  console.timeEnd('rust');
-
-  console.log(a1, a2)
-
-})
+import bubble from './bubble';
+import standard from './standard';
 
 
-function shuffle(nums, inplace = false) {
-  let random = inplace ? nums : [...nums];
-  let i = random.length - 1;
-  while (i > 0) {
-    let next = (Math.random() * (i + 1)) | 0;
-    let temp = random[i];
-    random[i] = random[next];
-    random[next] = temp;
-    i--;
-  }
-  return random;
+let render$ = new Subject();
+
+import('wasm').then((Algo) => {
+  console.log('测试开始', Algo)
+  // 冒泡排序测试
+  let bubbleTest = test('bubble', bubble, Algo.bubble);
+  render$.next(bubbleTest(10));
+  render$.next(bubbleTest(10000));
+  render$.next(bubbleTest(10000000));
+
+  console.log('冒泡排序 > 测试完毕')
+
+  let standardTest = test('standard', standard, Algo.standard);
+  render$.next(standardTest(10));
+  render$.next(standardTest(10000));
+  render$.next(standardTest(10000000));
+
+  console.log('标准库排序 > 测试完毕')
+});
+
+render$.subscribe((next) => {
+  console.log('next', next);
+  appendRow(next);
+});
+
+
+function appendRow(res) {
+  let body = document.querySelector('tbody');
+
+  const {name, len, result, timing} = res;
+
+  let row = `
+    <tr>
+      <td>${name}</td>
+      <td>${len}</td>
+      <td>${timing[0]}</td>
+      <td>${timing[1]}</td>
+    </tr>
+  `;
+
+  body.innerHTML = body.innerHTML + row
 }
-
-function bubble (nums) {
-  // for(let i = 0; i < nums.length; i++) {
-  //   for(let j = 0; j < nums.length - 1; j++) {
-  //     if (nums[j] > nums[j + 1]) {
-  //       exchange(nums, j, j + 1);
-  //     }
-  //   }
-  // }
-
-  nums.sort((a, b) => a - b)
-
-  return nums
-}
-
-function exchange(nums, i, j) {
-  let temp = nums[i];
-  nums[i] = nums[j];
-  nums[j] = temp;
-}
-
