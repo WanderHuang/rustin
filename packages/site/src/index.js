@@ -5,6 +5,7 @@ import './index.css';
 
 import bubble from './bubble';
 import standard from './standard';
+import quickSort from './quickSort';
 
 let render$ = new Subject();
 
@@ -26,6 +27,7 @@ import('wasm').then((Algo) => {
     clear();
     console.log('测试长度', val);
     test('冒泡排序', bubble, Algo.bubble)(val).then(nextVal);
+    test('快速排序', quickSort, Algo.quickSort)(val).then(nextVal);
     test('语言标准库排序', standard, Algo.standard)(val).then(nextVal);
   });
 });

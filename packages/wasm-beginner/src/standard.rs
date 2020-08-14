@@ -1,4 +1,4 @@
-pub fn run(arr: &[f64]) -> Vec<f64> {
+pub fn run(arr: &[i32]) -> Vec<i32> {
   let mut copy = arr.to_vec();
   copy.sort_unstable_by(|a, b| a.partial_cmp(b).unwrap());
   copy

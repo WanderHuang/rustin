@@ -1,4 +1,4 @@
-pub fn run(arr: &[f64]) -> Vec<f64> {
+pub fn run(arr: &[i32]) -> Vec<i32> {
   let len = arr.len();
   let mut copy = arr.to_vec();
   for _i in 0..len {

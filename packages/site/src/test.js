@@ -1,7 +1,7 @@
 function initArray(len) {
-  let arr = [];
+  let arr = new Int32Array(len);
   for(let i = 0; i < len; i++) {
-    arr.push(i);
+    arr[i] = i;
   }
   arr = shuffle(arr);
   return arr;
