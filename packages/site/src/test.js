@@ -22,27 +22,30 @@ function shuffle(nums, inplace = false) {
 
 export default (name, js, rust) => (len) => {
   
-  let statistics = {
-    name,
-    len,
-    timing: [],
-    result: [],
-  };
-  let arr1 = initArray(len);
-  let arr2 = initArray(len);
-
-  let jsStart = performance.now();
-  let jsResult = js(arr1);
-  let jsEnd = performance.now();
-  let rustStart = performance.now();
-  let rustResult = rust(arr2);
-  let rustEnd = performance.now();
+  return new Promise(resolve => {
+    let statistics = {
+      name,
+      len,
+      timing: [],
+      result: [],
+    };
+    let arr1 = initArray(len);
+    let arr2 = initArray(len);
   
-  statistics.timing.push(jsEnd - jsStart);
-  statistics.timing.push(rustEnd - rustStart);
+    let jsStart = performance.now();
+    let jsResult = js(arr1);
+    let jsEnd = performance.now();
+    let rustStart = performance.now();
+    let rustResult = rust(arr2);
+    let rustEnd = performance.now();
+    
+    statistics.timing.push(jsEnd - jsStart);
+    statistics.timing.push(rustEnd - rustStart);
+  
+    statistics.result.push(jsResult);
+    statistics.result.push(rustResult);
 
-  statistics.result.push(jsResult);
-  statistics.result.push(rustResult);
 
-  return statistics;
+    resolve(statistics)
+  });
 }
