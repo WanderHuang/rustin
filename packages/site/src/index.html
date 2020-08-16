@@ -7,7 +7,9 @@
 </head>
 <body>
   <div id="root">
-    <h3>基于rust的webassembly(wasm-pack) 与 js 性能对比 - 排序算法</h3>
+    <h2>基于rust的webassembly(wasm-pack) 与 js 性能对比 - 排序算法</h2>
+    <div class="divider"></div>
+    <h3>测试结果</h3>
     <table bordered class="render-table">
       <thead>
         <tr>
@@ -25,11 +27,22 @@
       </tbody>
     </table>
 
+    <div class="divider"></div>
     <div>
       <input id="count" />
       <button id="action">测试此数组大小</button>
     </div>
-    <div id="desc"></div>
+
+    <div class="divider"></div>
+    <div>
+      <h3>消息区域</h3>
+      <p id="message"></p>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <h3>浏览器信息</h3>
+      <div id="desc"></div>
+    </div>
   </div>
 </body>
 </html>
