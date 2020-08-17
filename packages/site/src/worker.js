@@ -103,7 +103,6 @@ const test = (name, js, rust) => (len) => {
     let rustStart = Date.now();
     let rustResult = rust(arr2);
     let rustEnd = Date.now();
-    console.log(jsStart, jsEnd, rustStart, rustEnd)
 
     statistics.timing.push(jsEnd - jsStart);
     statistics.timing.push(rustEnd - rustStart);
