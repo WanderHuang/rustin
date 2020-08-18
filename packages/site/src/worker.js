@@ -1,5 +1,6 @@
 let global = self;
 
+
 function Event() {
   this.sub = () => console.log('init sub');
 }
@@ -21,14 +22,14 @@ global.ev = new Event();
 
 let readyResolve;
 let ready = new Promise((resolve) => (readyResolve = resolve));
-let moduleNames = ['bubble', 'quickSort', 'standard', 'wasm'];
+let moduleNames = ['bubble', 'quickSort', 'standard','wasm'];
 let totalNames = [];
 global.ev.subscribe((action) => {
   console.log('module is prepared >', action);
   totalNames.push(action);
   if (totalNames.length === moduleNames.length) {
-    global.rust_wasm_bindgen.load('wasm/wasm_beginner_bg.wasm').then(data => {
-      readyResolve(global.rust_wasm_bindgen.algo)
+    global.rust_wasm_bindgen('wasm/wasm_beginner_bg.wasm').then(data => {
+      readyResolve(global.rust_wasm_bindgen)
     })
   }
 });
@@ -73,8 +74,8 @@ function initArray(len) {
   return arr;
 }
 
-function shuffle(nums, inplace = false) {
-  let random = inplace ? nums : [...nums];
+function shuffle(nums) {
+  let random = nums;
   let i = random.length - 1;
   while (i > 0) {
     let next = (Math.random() * (i + 1)) | 0;
@@ -97,12 +98,12 @@ const test = (name, js, rust) => (len) => {
     let arr1 = initArray(len);
     let arr2 = initArray(len);
 
-    let jsStart = Date.now();
-    let jsResult = js(arr1);
-    let jsEnd = Date.now();
     let rustStart = Date.now();
     let rustResult = rust(arr2);
     let rustEnd = Date.now();
+    let jsStart = Date.now();
+    let jsResult = js(arr1);
+    let jsEnd = Date.now();
 
     statistics.timing.push(jsEnd - jsStart);
     statistics.timing.push(rustEnd - rustStart);

@@ -21,16 +21,16 @@ mod quick_sort;
 /// 冒泡排序
 #[wasm_bindgen]
 pub fn bubble(arr: &[i32]) -> Vec<i32> {
-    bubble::run(arr)
+    bubble::run(&mut arr.to_vec()).to_vec()
 }
 
 /// 标准库排序
 #[wasm_bindgen]
-pub fn standard(arr: &[i32]) -> Vec<i32> {
+pub fn standard(arr: &mut [i32]) -> Vec<i32> {
     standard::run(arr)
 }
 
 #[wasm_bindgen(js_name = "quickSort")]
-pub fn quick_sort(arr: &[i32]) -> Vec<i32> {
+pub fn quick_sort(arr: &mut [i32]) -> Vec<i32> {
     quick_sort::run(&mut arr.to_vec(), 0, arr.len() - 1).to_vec()
 }

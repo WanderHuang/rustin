@@ -1,13 +1,12 @@
-pub fn run(arr: &[i32]) -> Vec<i32> {
+pub fn run(arr: &mut Vec<i32>) -> &mut Vec<i32>  {
   let len = arr.len();
-  let mut copy = arr.to_vec();
   for _i in 0..len {
     for j in 0..len - 1 {
-      if copy[j] > copy[j + 1] {
-        copy.swap(j, j + 1);
+      if arr[j] > arr[j + 1] {
+        arr.swap(j, j + 1);
       }
     }
   }
 
-  copy
+  arr
 }

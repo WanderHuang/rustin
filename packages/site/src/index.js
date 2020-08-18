@@ -1,4 +1,4 @@
-import { fromEvent, zip } from 'rxjs';
+import { fromEvent, zip, merge } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import './index.css';
 import fromWorker from './rx/fromWorker';
@@ -59,7 +59,13 @@ window.onload = function () {
         map((e) => Number(e.target.value)),
         filter((val) => !isNaN(val))
       ),
-      fromEvent(document.querySelector('#action'), 'click')
+      merge(
+        fromEvent(document.querySelector('#action'), 'click'),
+        fromEvent(window, 'keydown').pipe(
+          map(e => e.keyCode),
+          filter(val => val === 13)
+        )
+      )
     );
   
     let worker = new Worker('./worker.js');
