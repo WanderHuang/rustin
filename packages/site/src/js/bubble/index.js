@@ -6,7 +6,7 @@
       nums[j] = temp;
     }
     // 模拟克隆操作
-    let nums = JSON.parse(JSON.stringify(input));
+    let nums = input;
     let len = nums.length;
     let i = 0;
     while (i < len) {
