@@ -44,3 +44,18 @@ table tr {
     color: gray;
   }
 }
+
+
+.zone-wrap {
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: 1fr 1fr;
+}
+
+.zone-function {
+  padding: 0 10px;
+}
+
+.zone-display {
+  padding: 0 10px;
+}

@@ -1,48 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rust in web(Webassembly)</title>
-</head>
-<body>
-  <div id="root">
-    <h2>基于rust的webassembly(wasm-pack) 与 js 性能对比 - 排序算法</h2>
-    <div class="divider"></div>
-    <h3>测试结果</h3>
-    <table bordered class="render-table">
-      <thead>
-        <tr>
-          <td rowspan="2">名称</td>
-          <td rowspan="2">数组大小</td>
-          <td colspan="2">耗费时间(ms)</td>
-        </tr>
-        <tr>
-          <td>Pure Javascript</td>
-          <td>Rust in Wasm</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr></tr>
-      </tbody>
-    </table>
-
-    <div class="divider"></div>
-    <div>
-      <input id="count" />
-      <button id="action">测试此数组大小</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rust in web(Webassembly)</title>
+  </head>
+  <body>
+    <div id="root">
+      <h2>基于rust的webassembly(wasm-pack) 与 js 性能对比</h2>
+      <div class="divider"></div>
+      <div class="zone-wrap">
+        <div class="zone-display">
+          <h4>测试结果</h4>
+          <table bordered class="render-table">
+            <thead>
+              <tr>
+                <td rowspan="2">名称</td>
+                <td rowspan="2">数组/字符串大小</td>
+                <td rowspan="2">计算次数</td>
+                <td colspan="2">耗费时间(ms)</td>
+              </tr>
+              <tr>
+                <td>Pure Javascript</td>
+                <td>Rust in Wasm</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr></tr>
+            </tbody>
+          </table>
+          <div>
+            <h4>消息区域</h4>
+            <p id="message"></p>
+          </div>
+          <div>
+            <h4>功能区域</h4>
+            <div>
+              <button id="clear">清除结果</button>
+            </div>
+          </div>
+        </div>
+        <div class="zone-function">
+          <h3>排序算法</h3>
+          <div>
+            <input id="sortLength" placeholder="随机数组长度"/>
+            <button id="sortAction">测试此数组大小</button>
+          </div>
+          <h3>MD5校验算法</h3>
+          <div>
+            <input id="md5Length" placeholder="随机字符串长度"/>
+            <input id="md5Count" placeholder="计算次数"/>
+            <button id="md5Action">测试此字符串大小</button>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <h3>浏览器信息</h3>
+        <div id="desc"></div>
+      </div>
     </div>
-
-    <div class="divider"></div>
-    <div>
-      <h3>消息区域</h3>
-      <p id="message"></p>
-    </div>
-    <div class="divider"></div>
-    <div>
-      <h3>浏览器信息</h3>
-      <div id="desc"></div>
-    </div>
-  </div>
-</body>
+  </body>
 </html>

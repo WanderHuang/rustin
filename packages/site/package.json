@@ -24,7 +24,9 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "md5": "^2.3.0",
     "rxjs": "^6.6.2",
+    "wasm-md5": "file:../wasm-md5/pkg",
     "wasm": "file:../wasm-beginner/pkg"
   }
 }

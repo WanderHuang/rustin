@@ -16,6 +16,7 @@ const config = {
     path: path.resolve(cwd, 'dist'),
     filename: 'index.[hash:8].js',
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
