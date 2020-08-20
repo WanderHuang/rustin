@@ -51,3 +51,15 @@ cargo install cargo-generate
 ```bash
 cargo generate --git https://github.com/rustwasm/wasm-pack-template
 ```
+
+
+## 架构
+
+`packages`分为前端架构和wasm架构
+
+- site：基于webpack开发页面展示效果
+- wasm-beginner：一些基本算法的引入
+
+如果要基于`wasm`和`worker`来设计一个网站的架构，那么大概是这样的
+
+![frame](../img/framework.png)
