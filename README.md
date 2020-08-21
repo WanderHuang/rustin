@@ -1,7 +1,17 @@
 # rustin
 web toy built by js &amp; rust
 
-## 😋rust语言
+## 🚀[Webassembly](https://webassembly.github.io/spec/core/)
+利用wasm字节码处理前端的耗时运算，让浏览器能够处理更多耗时任务。
+
+### 测试设计
+利用`web worker`让浏览器可以无阻塞运算，同时利用`wasm`文件处理高耗时运算。让浏览器体验更加平滑。
+![design](./img/framework.png)
+
+### 测试结果
+![benchmark](./img/benchmark-1.jpeg)
+
+## 😋[Rust语言](https://www.rust-lang.org/)
 
 rust是一门年轻的语言，正式发行也不到十年时间。
 
