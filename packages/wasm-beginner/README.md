@@ -4,26 +4,26 @@
 
 ## 创建模板
 
-```
+```bash
 cargo generate --git https://github.com/rustwasm/wasm-pack-template.git --name my-project
 cd my-project
 ```
 
 ## 构建
 
-```
+```bash
 wasm-pack build
 ```
 
 ## 打包
 
-```
+```bash
 wasm-pack test --headless --firefox
 ```
 
 ## 发布
 
-```
+```bash
 wasm-pack publish
 ```
 
