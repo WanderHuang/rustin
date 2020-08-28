@@ -1,0 +1,21 @@
+{
+  "name": "clay",
+  "version": "1.0.0",
+  "description": "clay is an easy scaffold for js & wasm without those well-known framework",
+  "main": "index.js",
+  "scripts": {
+    "build:wasm": "wasm-pack build --release",
+    "build": "node ./scripts/build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-chain": "^6.5.1",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "rxjs": "^6.6.2"
+  }
+}

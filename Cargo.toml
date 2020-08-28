@@ -1,0 +1,70 @@
+[package]
+name = "clay"
+version = "0.1.0"
+authors = ["wander <junjiehuang@yeah.net>"]
+edition = "2018"
+description = "创建你的wasm包"
+license = "MIT"
+
+# Define `includes` & `excludes`
+# 定义包路径和忽略路径
+# [workspace]
+members = ["crates/*"]
+exclude = ["src"]
+
+# 发布包 (crate)
+[lib]
+crate-type = ["cdylib", "rlib"]
+path = "crates/lib.rs"
+edition = "2018"
+
+# 发布程序 (binary)
+[[bin]]
+name = "clay-tools"
+test = true
+bench = true
+path = "crates/main.rs"
+edition = "2018"
+
+# 测试 (unit test)
+[[test]]
+name = "clay-tools-test"
+path = "tests/crates"
+edition = "2018"
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+# js到rust桥接器
+wasm-bindgen = { version = "0.2.67", features = ["serde-serialize"] }
+# 设置`console.log`
+console_log = "0.2.0"
+log = "0.4"
+# 随机数
+rand = "0.7.3"
+# 设置`console.error`
+console_error_panic_hook = { version = "0.1.6", optional = true }
+# `wee_alloc` is a tiny allocator for wasm that is only ~1K in code size
+# compared to the default allocator's ~10K. It is slower than the default
+# allocator, however.
+#
+# Unfortunately, `wee_alloc` requires nightly Rust when targeting wasm for now.
+# 内存分配器
+wee_alloc = { version = "0.4.5", optional = true }
+
+[dev-dependencies]
+# 桥接器测试
+wasm-bindgen-test = "0.3.17"
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+# 优化到最小
+opt-level = "s"
+
+# [package.metadata.wasm-pack.profile.release]
+# wasm-opt = false
+# refer to https://github.com/rustwasm/wasm-pack/issues/886
+[package.metadata.wasm-pack.profile.release]
+# wasm-pack设置变量允许修改
+wasm-opt = ["-Oz", "--enable-mutable-globals"]
