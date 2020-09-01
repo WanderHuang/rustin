@@ -4,13 +4,14 @@
   "description": "clay is an easy scaffold for js & wasm without those well-known framework",
   "main": "index.js",
   "scripts": {
-    "build:wasm": "wasm-pack build --release",
+    "build:wasm": "node ./scripts/build.wasm.js",
     "build": "node ./scripts/build.js"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "chalk": "^4.1.0",
     "webpack": "^4.44.1",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^3.11.0"
