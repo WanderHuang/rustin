@@ -53,6 +53,12 @@ console_error_panic_hook = { version = "0.1.6", optional = true }
 # 内存分配器
 wee_alloc = { version = "0.4.5", optional = true }
 
+# ===================================
+# ===========Your crates=============
+# ===================================
+
+compiler = {path = "./crates/the_super_tiny_compiler", package="the_super_tiny_compiler"}
+
 [dev-dependencies]
 # 桥接器测试
 wasm-bindgen-test = "0.3.17"

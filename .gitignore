@@ -1,4 +1,4 @@
 node_modules/
-/target
 package-lock.json
 Cargo.lock
+target
