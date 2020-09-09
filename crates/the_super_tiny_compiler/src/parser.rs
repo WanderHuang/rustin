@@ -7,7 +7,10 @@ pub enum AstTypeEnum {
   NumberLiteral,
   StringLiteral,
   CallExpression,
-  Program
+  ExpressionStatement,
+  Program,
+  Identifier,
+  Null
 }
 
 #[derive(Debug, Clone)]
@@ -18,6 +21,10 @@ pub struct Ast {
   params: Option<Vec<Ast>>,
   body: Option<Vec<Ast>>,
   parent: Option<Box<Ast>>,
+  context: Option<Vec<Ast>>,
+  callee: Option<Box<Ast>>,
+  arguments: Option<Vec<Ast>>,
+  expresssion: Option<Box<Ast>>,
 }
 
 impl Ast {
@@ -28,7 +35,11 @@ impl Ast {
       name: None,
       params: None,
       body: None,
-      parent: None
+      parent: None,
+      context: None,
+      callee: None,
+      arguments: None,
+      expresssion: None,
     }
   }
   fn set_value(&mut self, val: String) -> Self {
@@ -53,6 +64,31 @@ impl Ast {
     next.body = Some(bd);
     next
   }
+  fn set_context(&mut self, context: Vec<Ast>) -> Self {
+    let mut next = self.clone();
+    next.context = Some(context);
+    next
+  }
+  fn set_callee(&mut self, callee: Ast) -> Self {
+    let mut next = self.clone();
+    next.callee = Some(Box::new(callee));
+    next
+  }
+  
+  fn set_arguments(&mut self, args: Vec<Ast>) -> Self {
+    let mut next = self.clone();
+    next.arguments = Some(args);
+    next
+
+  }
+  fn set_expression(&mut self, expresssion: Ast) -> Self {
+    let mut next = self.clone();
+    next.expresssion = Some(Box::new(expresssion));
+    next
+
+  }
+
+
 }
 
 pub trait AstReader {
