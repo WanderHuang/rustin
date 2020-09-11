@@ -1,14 +1,25 @@
 
-pub mod token;
-pub mod parser;
+// pub mod token;
+// pub mod parser;
+
+mod token;
+mod parser;
+mod generator;
+mod transformer;
 
 use token::{Token, TokenReader};
 use parser::{Ast, AstReader};
 pub fn compile(input: &str) -> &str {
     let mut all = Token::read(input);
     all.reverse();
-    let ast = Ast::transform(&mut all);
-    println!("ast ==> \n {:?}", ast);
+    let mut ast = Ast::transform(&mut all);
+
+    let next_ast = transformer::generate(&mut ast);
+
+    println!("ast ==> \n {:?}", next_ast);
+    let res = generator::from(ast);
+    
+    println!("result ==> \n {:?}", res);
 
     input
 }

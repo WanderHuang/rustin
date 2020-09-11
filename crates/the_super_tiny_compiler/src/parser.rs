@@ -1,8 +1,9 @@
 use crate::token::Token;
 use crate::token::TokenEnum;
 use std::error::Error;
+use std::cmp::PartialEq;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum AstTypeEnum {
   NumberLiteral,
   StringLiteral,
@@ -15,20 +16,20 @@ pub enum AstTypeEnum {
 
 #[derive(Debug, Clone)]
 pub struct Ast {
-  ast_type: AstTypeEnum,
-  value: Option<String>,
-  name: Option<String>,
-  params: Option<Vec<Ast>>,
-  body: Option<Vec<Ast>>,
-  parent: Option<Box<Ast>>,
-  context: Option<Vec<Ast>>,
-  callee: Option<Box<Ast>>,
-  arguments: Option<Vec<Ast>>,
-  expresssion: Option<Box<Ast>>,
+  pub ast_type: AstTypeEnum,
+  pub value: Option<String>,
+  pub name: Option<String>,
+  pub params: Option<Vec<Ast>>,
+  pub body: Option<Vec<Ast>>,
+  pub parent: Option<Box<Ast>>,
+  pub context: Option<Vec<Ast>>,
+  pub callee: Option<Box<Ast>>,
+  pub arguments: Option<Vec<Ast>>,
+  pub expresssion: Option<Box<Ast>>,
 }
 
 impl Ast {
-  fn new(ast_type: AstTypeEnum) -> Self {
+  pub fn new(ast_type: AstTypeEnum) -> Self {
     Ast {
       ast_type,
       value: None,
@@ -42,46 +43,47 @@ impl Ast {
       expresssion: None,
     }
   }
-  fn set_value(&mut self, val: String) -> Self {
+  pub fn set_value(&mut self, val: String) -> Self {
     let mut next = self.clone();
     next.value = Some(val);
     next
   }
 
-  fn set_name(&mut self, name: String) -> Self {
+  pub fn set_name(&mut self, name: String) -> Self {
     let mut next = self.clone();
     next.name = Some(name);
     next
   }
 
-  fn set_params(&mut self, arr: Vec<Ast>) -> Self {
+  pub fn set_params(&mut self, arr: Vec<Ast>) -> Self {
     let mut next = self.clone();
     next.params = Some(arr);
     next
   }
-  fn set_body(&mut self, bd: Vec<Ast>) -> Self {
+  pub fn set_body(&mut self, bd: Vec<Ast>) -> Self {
     let mut next = self.clone();
     next.body = Some(bd);
     next
   }
-  fn set_context(&mut self, context: Vec<Ast>) -> Self {
+  pub fn set_context(&mut self, context: Vec<Ast>) -> Self {
     let mut next = self.clone();
     next.context = Some(context);
     next
   }
-  fn set_callee(&mut self, callee: Ast) -> Self {
-    let mut next = self.clone();
-    next.callee = Some(Box::new(callee));
-    next
-  }
+  // pub fn set_callee(&mut self, callee: Ast) -> Self {
+  //   let mut next = self.clone();
+  //   next.callee = Some(Box::new(callee));
+  //   next
+  // }
   
-  fn set_arguments(&mut self, args: Vec<Ast>) -> Self {
-    let mut next = self.clone();
-    next.arguments = Some(args);
-    next
+  // pub fn set_arguments(&mut self, args: Vec<Ast>) -> Self {
+  //   let mut next = self.clone();
+  //   next.arguments = Some(args);
+  //   next
 
-  }
-  fn set_expression(&mut self, expresssion: Ast) -> Self {
+  // }
+
+  pub fn set_expression(&mut self, expresssion: Ast) -> Self {
     let mut next = self.clone();
     next.expresssion = Some(Box::new(expresssion));
     next
