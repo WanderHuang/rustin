@@ -43,51 +43,42 @@ impl Ast {
       expresssion: None,
     }
   }
-  pub fn set_value(&mut self, val: String) -> Self {
-    let mut next = self.clone();
-    next.value = Some(val);
-    next
+  pub fn set_value(mut self, val: String) -> Self {
+    self.value = Some(val);
+    self
   }
 
-  pub fn set_name(&mut self, name: String) -> Self {
-    let mut next = self.clone();
-    next.name = Some(name);
-    next
+  pub fn set_name(mut self, name: String) -> Self {
+    self.name = Some(name);
+    self
   }
 
-  pub fn set_params(&mut self, arr: Vec<Ast>) -> Self {
-    let mut next = self.clone();
-    next.params = Some(arr);
-    next
+  pub fn set_params(mut self, arr: Vec<Ast>) -> Self {
+    self.params = Some(arr);
+    self
   }
-  pub fn set_body(&mut self, bd: Vec<Ast>) -> Self {
-    let mut next = self.clone();
-    next.body = Some(bd);
-    next
+  pub fn set_body(mut self, bd: Vec<Ast>) -> Self {
+    self.body = Some(bd);
+    self
   }
-  pub fn set_context(&mut self, context: Vec<Ast>) -> Self {
-    let mut next = self.clone();
-    next.context = Some(context);
-    next
+  pub fn set_context(mut self, context: Vec<Ast>) -> Self {
+    self.context = Some(context.to_vec());
+    self
   }
-  // pub fn set_callee(&mut self, callee: Ast) -> Self {
-  //   let mut next = self.clone();
-  //   next.callee = Some(Box::new(callee));
-  //   next
-  // }
+  pub fn set_callee(mut self, callee: Ast) -> Self {
+    self.callee = Some(Box::new(callee));
+    self
+  }
   
-  // pub fn set_arguments(&mut self, args: Vec<Ast>) -> Self {
-  //   let mut next = self.clone();
-  //   next.arguments = Some(args);
-  //   next
+  pub fn set_arguments(mut self, args: Vec<Ast>) -> Self {
+    self.arguments = Some(args);
+    self
 
-  // }
+  }
 
-  pub fn set_expression(&mut self, expresssion: Ast) -> Self {
-    let mut next = self.clone();
-    next.expresssion = Some(Box::new(expresssion));
-    next
-
+  pub fn set_expression(mut self, expresssion: Ast) -> Self {
+    self.expresssion = Some(Box::new(expresssion));
+    self
   }
 
 
