@@ -4,7 +4,7 @@ use super::parser::AstTypeEnum;
 pub fn from(ast: Ast) -> Result<String, String> {
   
   fn process(node: Ast) -> String {
-    println!("Process => {:?} {:?}\n", node.ast_type, node);
+    // println!("Process => {:?} {:?}\n", node.ast_type, node);
     let res = match node.ast_type {
       AstTypeEnum::Program => {
         let mut res = String::from("");

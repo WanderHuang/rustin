@@ -65,16 +65,16 @@ impl Ast {
     self.context = Some(context.to_vec());
     self
   }
-  pub fn set_callee(mut self, callee: Ast) -> Self {
-    self.callee = Some(Box::new(callee));
-    self
-  }
+  // pub fn set_callee(mut self, callee: Ast) -> Self {
+  //   self.callee = Some(Box::new(callee));
+  //   self
+  // }
   
-  pub fn set_arguments(mut self, args: Vec<Ast>) -> Self {
-    self.arguments = Some(args);
-    self
+  // pub fn set_arguments(mut self, args: Vec<Ast>) -> Self {
+  //   self.arguments = Some(args);
+  //   self
 
-  }
+  // }
 
   pub fn set_expression(mut self, expresssion: Ast) -> Self {
     self.expresssion = Some(Box::new(expresssion));
