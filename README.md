@@ -12,12 +12,12 @@ Let's build web pages by `rust` & `js`!
 ## 🚀 [Webassembly](https://webassembly.github.io/spec/core/)
 A type of machine code for browser to handle time waste jobs, which can assembly from multiple programming language.
 
-### 测试设计
+### Test
 A non-block calculation in browser implement with `web worker`, mean while, we can use `wasm` to handle time waste job.
 All for a better experience of web site.
 ![design](./img/framework.png)
 
-### 测试结果
+### Result
 ![benchmark](./img/benchmark-1.jpeg)
 
 ## 🧵 [Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
@@ -41,7 +41,7 @@ A different perspective for dealing with data flow and event.
 - [x] Broadcast
 - [x] ...
 
-## 😋 [Rust语言](https://www.rust-lang.org/)
+## 😋 [Rust](https://www.rust-lang.org/)
 
 Rust is a language for future with many advanced programming tech.
 
@@ -71,14 +71,14 @@ My opinion：
 
   Not a bad trial for full-stack engineer to use Rust(`server / wasm`)。
   
-## 📖学习资源
+## 📖Resources
 
-### 文档 & 概念
+### documentation
 - [Official](https://www.rust-lang.org/zh-CN/)
 - [emscripten](https://emscripten.org/)
   ![](./img/EmscriptenToolchain.png)
 
-### 库 & 工具
+### Library & Tool
 - [`wasm-bindgen`](https://crates.io/crates/wasm-bindgen)
 - [`wasm-bindgen-futures`](https://crates.io/crates/wasm-bindgen-futures)
 - [`js-sys`](https://crates.io/crates/js-sys)
