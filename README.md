@@ -18,7 +18,19 @@ All for a better experience of web site.
 ![design](./img/framework.png)
 
 ### Result
-![benchmark](./img/benchmark-1.jpeg)
+
+| Algorithm | Size   | Count | Pure Javascript(ms) | Rust in warm(ms) |
+| --------- | ------ | ----- | ------------------- | ---------------- |
+| MD5       | 50000  | 1000  | 2409                | 521              |
+| bubble    | 20000  | 1     | 821                 | 1095             |
+| QuickSort | 20000  | 1     | 9                   | 3                |
+| Standard  | 20000  | 1     | 4                   | 2                |
+| Bubble    | 200000 | 1     | 99549               | 114333           |
+| QuickSort | 200000 | 1     | 22                  | 36               |
+| Standard  | 200000 | 1     | 51                  | 26               |
+| MD5       | 500000 | 1000  | 24344               | 4866             |
+
+
 
 ## 🧵 [Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
 `Web Workers` is a simulated multi-thread environment in browser.
@@ -70,7 +82,7 @@ My opinion：
   But we can take nourishment from comprehensive documentation by offical. Those advanced techs.
 
   Not a bad trial for full-stack engineer to use Rust(`server / wasm`)。
-  
+
 ## 📖Resources
 
 ### documentation
